@@ -32,6 +32,9 @@ h3, h4, h5, h6 {
   color:#494949;
 }
 
+h4, h5 {
+  font-size: 15px;
+}
 a {
   color:#39c;
   font-weight:400;
@@ -69,6 +72,11 @@ pre {
   border-radius:5px;
   border:1px solid #e5e5e5;
   overflow-x: auto;
+  width: auto;
+}
+
+p.danger{
+  color: red;
 }
 
 table {
@@ -96,7 +104,7 @@ img {
 }
 
 header {
-  width:270px;
+  width:200px;
   float:left;
   position:fixed;
 }
@@ -160,7 +168,7 @@ header ul a strong {
 }
 
 section {
-  width:500px;
+  width:550px;
   float:right;
   padding-bottom:50px;
 }
