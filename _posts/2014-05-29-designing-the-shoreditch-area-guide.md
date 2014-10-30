@@ -5,9 +5,10 @@ subtitle: Keeping it simple
 author: Jeremy
 categories: design
 cover: shoreditch
+published: false
 ---
 
-On the [StreetHub blog](http://blog.streethub.com/), Luciana has been writing several area guides, covering different areas of London. 
+On the [StreetHub blog](http://blog.streethub.com/), Luciana has been writing several area guides, covering different areas of London.
 
 ## Content first
 
@@ -23,7 +24,7 @@ I love high **information density** in an interface. It provides a quick overvie
 
 To make it both less boring and meaningful, I differentiated the menu items through weight and color:
 
-* section headings 
+* section headings
 
 
 <figure>
