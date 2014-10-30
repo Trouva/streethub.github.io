@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'EffraLightItalic';
+    src: url('effralight-italic.eot');
+    src: url('effralight-italic.eot') format('embedded-opentype'),
+         url('effralight-italic.woff') format('woff'),
+         url('effralight-italic.ttf') format('truetype'),
+         url('effralight-italic.svg#EffraLightItalic') format('svg');
+}

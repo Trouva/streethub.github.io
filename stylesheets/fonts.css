@@ -1,0 +1,103 @@
+@font-face {
+  font-family: 'Effra Medium';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/effra/600/effra-bold.eot');
+  src: url('../fonts/effra/600/effra-bold.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/effra/600/effra-bold.woff') format('woff'),
+       url('../fonts/effra/600/effra-bold.ttf') format('truetype'),
+       url('../fonts/effra/600/effra-bold.svg#Sri-TSCRegular') format('svg');
+}
+
+@font-face {
+  font-family: 'Effra Medium';
+  font-style: italic;
+  font-weight: normal;
+  src: url('../fonts/effra/600/effra-bolditalic.eot');
+  src: url('../fonts/effra/600/effra-bolditalic.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/effra/600/effra-bolditalic.woff') format('woff'),
+       url('../fonts/effra/600/effra-bolditalic.ttf') format('truetype'),
+       url('../fonts/effra/600/effra-bolditalic.svg#Sri-TSCRegular') format('svg');
+}
+
+@font-face {
+  font-family: 'Effra Light';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/effra/300/effralight-regular.eot');
+  src: url('../fonts/effra/300/effralight-regular.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/effra/300/effralight-regular.woff') format('woff'),
+       url('../fonts/effra/300/effralight-regular.ttf') format('truetype'),
+       url('../fonts/effra/300/effralight-regular.svg#Sri-TSCRegular') format('svg');
+}
+
+@font-face {
+  font-family: 'Effra Light';
+  font-style: italic;
+  font-weight: normal;
+  src: url('../fonts/effra/300/effralight-italic.eot');
+  src: url('../fonts/effra/300/effralight-italic.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/effra/300/effralight-italic.woff') format('woff'),
+       url('../fonts/effra/300/effralight-italic.ttf') format('truetype'),
+       url('../fonts/effra/300/effralight-italic.svg#Sri-TSCRegular') format('svg');
+}
+
+@font-face {
+  font-family: 'tech-streethub';
+  src: url('../fonts/tech-streethub/tech-streethub.eot?21609275');
+  src: url('../fonts/tech-streethub/tech-streethub.eot?21609275#iefix') format('embedded-opentype'),
+       url('../fonts/tech-streethub/tech-streethub.woff?21609275') format('woff'),
+       url('../fonts/tech-streethub/tech-streethub.ttf?21609275') format('truetype'),
+       url('../fonts/tech-streethub/tech-streethub.svg?21609275#tech-streethub') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'tech-streethub';
+    src: url('../font/tech-streethub.svg?21609275#tech-streethub') format('svg');
+  }
+}
+*/
+ 
+ [class^="fa-"]:before, [class*=" fa-"]:before {
+  font-family: "tech-streethub";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+     
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+ 
+.fa-info:before { content: '\e802'; } /* '' */
+.fa-right-open:before { content: '\e803'; } /* '' */
+.fa-asterisk:before { content: '\e800'; } /* '' */
+.fa-facebook:before { content: '\e805'; } /* '' */
+.fa-github:before { content: '\e801'; } /* '' */
+.fa-gplus:before { content: '\e806'; } /* '' */
+.fa-twitter:before { content: '\e804'; } /* '' */

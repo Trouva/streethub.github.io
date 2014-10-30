@@ -1,0 +1,25 @@
+---
+layout: default
+nav: blog
+---
+
+<article class="single">
+  <div class="cover" style="background-image: url(/images/covers/{{ page.cover }}.png);"></div>
+  <!-- <time class="date" datetime="">{{ page.date | date_to_string }}</time> -->
+  <div class="heading">
+    <h1 class="title">
+      {{ page.title }}
+    </h1>
+    <h2 class="subtitle">
+      {{ page.subtitle }}
+    </h2>
+    <ul class="info">
+      <li>#{{ page.categories }}</li>
+      <li>@{{ page.author }}</li>
+      <li>☼ {{ page.date | date_to_string }}</li>
+    </ul>
+  </div>
+  <div class="content">
+    {{ content }}
+  </div>
+</article>

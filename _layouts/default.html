@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ page.title }}</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ site.url }}/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/highlightjs.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/monokai_sublime.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700"> -->
+  </head>
+  <body>
+    <header class="header">
+      <a class="home" href="{{ site.url }}/">
+        <h1 class="logo">
+          <img src="/images/logo.png" alt="Tech@Streethub logo">
+        </h1>
+        <h2 class="description">
+          JS: front/back, desktop/mobile
+        </h2>
+      </a>
+    </header>
+    {{ content }}
+    <a class="link streethub" href="https://www.streethub.com">
+      Visit streethub.com
+    </a>
+    <script type="text/javascript" src="{{ site.url }}/javascript/highlight.min.js"></script>
+    <script type="text/javascript" src="{{ site.url }}/javascript/scripts.js"></script>
+  </body>
+</html>

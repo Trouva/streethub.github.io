@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'EffraBoldItalic';
+    src: url('effra-bolditalic.eot');
+    src: url('effra-bolditalic.eot') format('embedded-opentype'),
+         url('effra-bolditalic.woff') format('woff'),
+         url('effra-bolditalic.ttf') format('truetype'),
+         url('effra-bolditalic.svg#EffraBoldItalic') format('svg');
+}

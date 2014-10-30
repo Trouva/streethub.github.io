@@ -1,0 +1,5 @@
+name: StreetHub Tech blog
+markdown: redcarpet
+permalink: /:title.html
+pygments: true
+# url: http://streethub.github.io/blog

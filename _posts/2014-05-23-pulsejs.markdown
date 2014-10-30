@@ -1,0 +1,142 @@
+---
+layout: post
+title: Going mobile with Cordova
+subtitle: Web and Native
+author: Arnaud
+categories: mobile
+cover: cordova
+---
+
+A few months ago, we decided to develop the new Streethub iPhone app with Cordova.
+
+> Apache Cordova is a platform for building native mobile applications
+using HTML, CSS and JavaScript.
+
+Cordova allows you to build iOS apps like you would build a web app. On top of using common web technologies (HTML, CSS, JS), you have access to native iOS functionalities (GPS, Accelerometer…).
+
+## Plugins magic
+
+Although you can do most of the work with web technologies, we quickly found out that some parts of our mobile app needed to use iOS plugins. Indeed, implementing a non-native map was sluggish at best on an iPhone 4.
+
+Installing iOS plugins for Cordova is straightforward, you can find all the plugins on the [cordova website](http://plugins.cordova.io/.) If you feel adventurous, you can [build your own plugins](http://cordova.apache.org/docs/en/3.4.0/guide_hybrid_plugins_index.md.html#Plugin%20Development%20Guide).
+
+These plugins are wrappers around common iOS libraries. They fill the role of a communication layer between the iOS plugin and your web app contained in a web view. Cordova renders your app in a web view and has access to the `window` object, where most of the plugins inject their libraries.
+
+## Extending plugins
+
+In our app, we have used the [MapKit cordova plugin](https://github.com/imhotep/MapKit) plugin. Most of core features were already implemented but we need to use more methods from the mapkit framework (map scrolling). You can easily extend a plugin by adding the declaration of the method in the header file and the declaration in the .m file.  Then, you can execute the newly added method with the following code.
+
+On the iOS side (Objective-C)
+
+```objective-c
+// Header file (.h)
+@interface MapKitView : CDVPlugin <MKMapViewDelegate>
+- (void)changePinsColor:(CDVInvokedUrlCommand *)command;
+@end
+
+// Declaration (.m)
+
+// Header files
+// ...
+
+@implementation MapKitView
+- (void)changePinsColor:(CDVInvokedUrlCommand *)command
+{
+    CDVPluginResult* pluginResult = nil;
+
+    // ...
+
+    if(!error){
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    } else {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+    }
+
+    // Callback function for plugin
+    [self.commandDelegate
+        sendPluginResult:pluginResult
+        callbackId:command.callbackId];
+}
+@end
+
+```
+
+On the web app side (Javascript)
+
+```js
+// Generic example
+cordovaRef.exec(success, error, "service", "action", [params]);
+
+// Mapkit example
+cordovaRef.exec(function(res){
+    // Success handling
+}, function(err){
+    // Error handling
+},
+"MapKit", "changePinsColor", ['red']);
+```
+
+
+## Executing javascript
+
+Now, Imagine you need to communicate from the iOS method to your webapp, you can use the `stringByEvaluatingJavaScriptFromString` method.
+
+
+```objective-c
+// Execute a javascript function in the web view
+NSString *FunctionString = [NSString stringWithFormat:@"%s", "someCallback()"];
+[self.webView stringByEvaluatingJavaScriptFromString:FunctionString];
+```
+
+You only need to defined the `someCallback` in your webapp and attach it to the `window` object.
+
+## Wrapping up
+
+We have seen that you can Cordova is a powerful tool to get native functionalities into your app. While most of the plugins available online are useful and up-date, they often lack flexibility and rarely cover all the method of the targeted framework.
+
+That's why we decided to build `pulse.js`. This javascript micro-library makes extending your plugins on cordova/phonegap easy. Most of the plugins inject their methods in the window object and that's exactly what `pulse.js` does. Here're two examples of what `pulse.js` can do for you.
+
+- `Pulse.beat` communicates with the iOS app. It'll use the `cordova.exec` method to execute any method in an cordova plugin.
+
+
+```js
+// Calls the changePinsColor method in the mapKit cordova plugin
+Pulse.beat('mapKit.changePinsColor', 'red', success, error);
+
+```
+
+- `Pulse.listen` registers a method specific to a plugin. You can use it as a callback in your iOS code.
+
+We currently use it as a callback for the regionDidChangeAnimated event. It will return us the visible pins on the map.
+
+```js
+// Register event to show the visible annotations on the map
+Pulse.listen('mapKit.regionDidChangeAnimated', function(res){
+ // Success
+});
+```
+
+```objective-c
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+    // ...
+
+    NSString *functionString = [NSString
+        stringWithFormat:@"%s", "mapKit.regionDidChangeAnimated()"];
+    [self.webView stringByEvaluatingJavaScriptFromString:functionString];
+
+}
+```
+
+This small communication layer makes it easy to transmit informations between the webview and any iOS plugin.
+
+You can check it out on [GitHub](https://github.com/StreetHub/pulse.js) and download it via bower.
+
+```bower install pulse.js```
+
+## Conclusion
+
+Using Cordova speeds up the development process a lot. Most of the basic features of a mobile are easily doable in Javascript. There're many guides to optimize animations which we haven't covered. When you need to use an iOS frameworks like MapKit, you might need to learn some Objective-C and add some functionalities. Using `pulse.js` simplifies this process and allows you to focus on writing useful code
+
+
+If you have questions, ping tech@streethub.com.
+
