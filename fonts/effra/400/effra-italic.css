@@ -1,8 +1,0 @@
-@font-face {
-    font-family: 'EffraItalic';
-    src: url('effra-italic.eot');
-    src: url('effra-italic.eot') format('embedded-opentype'),
-         url('effra-italic.woff') format('woff'),
-         url('effra-italic.ttf') format('truetype'),
-         url('effra-italic.svg#EffraItalic') format('svg');
-}

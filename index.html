@@ -20,7 +20,7 @@ nav: blog
           <li>@{{ post.author }}</li>
           <li>☼ {{ post.date | date_to_string }}</li>
         </ul>
-        <a class="permalink" href="{{ site.url }}{{ post.url }}"></a>
+        <a class="permalink" href="{{ post.url }}"></a>
       </div>
     </article>
   {% endfor %}

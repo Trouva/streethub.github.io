@@ -20,7 +20,7 @@ a{ color: #cf553e; text-decoration: none; transition: all 100ms ease-out;}
 .logo{ display: inline-block; vertical-align: top;}
 .description{ font-size: 16px; font-weight: 300;}
 
-.link{ border: 1px solid #4d4d4d; color: #1a1a1a; display: block; font-size: 12px; font-weight: 400; letter-spacing: 0.2em; padding: 20px 0; text-align: center; text-transform: uppercase;}
+.link{ border: 1px solid #4d4d4d; color: #1a1a1a; display: block; font-size: 12px; font-weight: 400; letter-spacing: 0.2em; padding: 20px 0; position: relative; text-align: center; text-transform: uppercase; transition: all 100ms ease-out;}
   .link:hover{ background: #cf553e; border-color: #cf553e; color: white;}
 
 /* Post */
@@ -46,11 +46,16 @@ a{ color: #cf553e; text-decoration: none; transition: all 100ms ease-out;}
 .content{ margin: 0 auto; max-width: 800px; padding: 20px;}
 .content a{ border-bottom: 2px solid #f2f2f2; padding-bottom: 2px;}
   .content a:hover{ border-bottom-color: #cf553e; color: #1a1a1a;}
-.content h2{ font-size: 28px; margin-top: 2em;}
+.content h2,
+.content h3{ font-size: 40px; font-weight: 600; line-height: 1; margin-top: 2em;}
+.content h3{ font-size: 28px;}
 .content p,
+.content ul,
 .content blockquote{ margin: 1em 0;}
   .content p:first-child{ margin-top: 0;}
   .content p:last-child{ margin-bottom: 0;}
+.content ul{ list-style: inside disc;}
+.content ul ul{ list-style: inside circle; margin: 0 1em;}
 .content blockquote{ background: #fefae3; border-left: 5px solid #fce473; font-style: italic; padding: 1em 2em;}
 .content blockquote p{ margin: 0;}
 .content p code,
@@ -76,7 +81,10 @@ a{ color: #cf553e; text-decoration: none; transition: all 100ms ease-out;}
   .header{ padding: 80px 0;}
   .description{ font-size: 20px;}
   .link{ display: inline-block; font-size: 10px; padding: 5px 12px 5px 14px; vertical-align: top;}
+    .link:hover{ padding-right: 24px;}
     .streethub.link{ position: absolute; right: 20px; top: 20px;}
+  .link span{ color: white; font-size: 9px; opacity: 0; position: absolute; right: 8px; top: -6px; transition: all 100ms ease-out;}
+    .link:hover span{ opacity: 0.5; top: 6px}
   .cover{ height: 480px;}
   .title{ font-size: 36px;}
   .subtitle,

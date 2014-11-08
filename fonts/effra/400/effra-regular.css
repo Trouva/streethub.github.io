@@ -1,8 +1,0 @@
-@font-face {
-    font-family: 'EffraRegular';
-    src: url('effra-regular.eot');
-    src: url('effra-regular.eot') format('embedded-opentype'),
-         url('effra-regular.woff') format('woff'),
-         url('effra-regular.ttf') format('truetype'),
-         url('effra-regular.svg#EffraRegular') format('svg');
-}
