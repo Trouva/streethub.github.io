@@ -4,7 +4,8 @@ abbr,address,article,aside,audio,b,blockquote,body,body div,caption,cite,code,dd
 
 /* Shared properties */
 
-body{ font-family: Effra, Arial, sans-serif;}
+body, .content h2{ font-family: Effra, Arial, sans-serif;}
+.content{ font-family: 'Gentium Book Basic', Georgia, serif;}
 p, ul, ol, li{ font-weight: 300;}
 
 /* Generic tags*/
@@ -30,8 +31,8 @@ strong{ color: #1a1a1a;}
 .cover{ background: #f2f2f2 no-repeat center center; background-size: cover; height: 240px;}
 .heading{ background: white; padding: 25px 20px 40px; text-align: center;}
 .title,
-.subtitle{ letter-spacing: 0.2em; line-height: 1.25; text-transform: uppercase;}
-.title{ color: #1a1a1a; font-size: 24px; font-weight: 600;}
+.subtitle,
+.content h2{ color: #1a1a1a; font-size: 24px; font-weight: 600; letter-spacing: 0.2em; line-height: 1.25; text-transform: uppercase;}
 .subtitle{ color: #808080; font-size: 14px; font-weight: 300; margin: 1em 0;}
 .info{ color: #b3b3b3; font-size: 14px;}
 .info li{ display: inline-block; margin: 0 0.5em; vertical-align: top;}
@@ -44,21 +45,20 @@ strong{ color: #1a1a1a;}
 .single .subtitle,
 .single .info{ font-size: 16px;}
 
-.content{ font-family: 'Gentium Book Basic', Georgia, serif; margin: 0 auto; max-width: 800px; padding: 20px;}
+.content{ margin: 0 auto; max-width: 840px; padding: 20px;}
 .content a{ border-bottom: 2px solid #f2f2f2; padding-bottom: 2px;}
   .content a:visited{ color: #847bb9;}
   .content a:hover{ border-bottom-color: #cf553e; color: #1a1a1a;}
-.content h2,
+.content h2{ font-size: 32px; margin: 2em 0 1em; position: relative; text-align: center;}
 .content h3{ color: #1a1a1a; font-size: 32px; font-weight: 600; line-height: 1; margin-top: 2em;}
 .content h3{ font-size: 24px; margin-top: 3em;}
 .content h3 em{ font-weight: 600;}
 .content p,
-.content ul,
 .content blockquote{ margin: 1em 0;}
   .content p:first-child{ margin-top: 0;}
   .content p:last-child{ margin-bottom: 0;}
-.content ul{ list-style: inside disc;}
-.content ul ul{ list-style: inside circle; margin: 0 1em;}
+.content ul{ list-style: outside disc; margin: 1em;}
+.content ul ul{ list-style: outside circle;}
 .content blockquote{ background: #fefae3; border-left: 5px solid #fce473; font-style: italic; padding: 1em 2em;}
 .content blockquote p{ margin: 0;}
 .content p code,
@@ -66,13 +66,13 @@ strong{ color: #1a1a1a;}
 .content table code{ background: #23241f; color: #f8f8f2; font-size: 12px; padding: 3px 5px; position: relative; top: -2px; white-space: nowrap;}
 .content figure{ text-align: center;}
 .content figure a img{ vertical-align: top;}
-.content table{ font-size: 16px; line-height: 1; width: 100%;}
+.content table{ font-size: 16px; line-height: 1.25; width: 100%;}
 .content th,
 .content td{ border: 1px solid #e0e0e0; padding: 10px; text-align: left; vertical-align: top;}
 .content .highlight{ font-size: 12px;}
 .content .hljs{ vertical-align: top; width: 100%;}
 
-@media (min-width: 660px) {
+/*@media (min-width: 660px) {
   body{ font-size: 20px;}
   .cover{ height: 320px;}
   .heading{ padding: 40px 30px 60px;}
@@ -82,9 +82,10 @@ strong{ color: #1a1a1a;}
   .single .title{ font-size: 40px;}
   .single .subtitle,
   .single .info{ font-size: 20px;}
-}
+}*/
 
 @media (min-width: 840px) {
+  body{ font-size: 20px;}
   .header{ padding: 80px 0;}
   .description{ font-size: 20px;}
   .link{ display: inline-block; font-size: 10px; padding: 5px 12px 5px 14px; vertical-align: top;}
@@ -101,16 +102,20 @@ strong{ color: #1a1a1a;}
   .single .cover{ height: 600px;}
   .single .heading{ margin: -120px auto 0; max-width: 960px; padding: 80px 60px 60px;}
   .single .title{ font-size: 48px;}
-  .single .subtitle{ font-size: 30px;}
+  .single .subtitle{ font-size: 24px;}
   .single .info{ font-size: 20px;}
   .content{ padding: 0 0 80px;}
-  .content h2{ font-size: 48px;}
+  .content h2{ font-size: 48px; margin: 2em 0; padding: 0 80px;}
+  .content h2:before,
+  .content h2:after{ background: #4d4d4d; content: ''; display: block; height: 1px; left: -80px; position: absolute; top: 50%; width: 160px;}
+  .content h2:after{ left: auto; right: -80px;}
+  .content h3{ font-size: 32px;}
   .content .highlight{ font-size: 14px;}
 }
 
 @media (min-width: 1000px) {
-  .content figure{ margin: 2em -80px 3em;}
+  .content figure{ margin: 2em -60px 3em;}
   .content figure img{ box-shadow: 0 10px 10px rgba(0,0,0,0.1); transition: all 250ms ease-out;}
     .content figure a:hover img{ box-shadow: 0 10px 10px rgba(0,0,0,0.3);}
-  .content .highlight{ margin: 2em -80px;}
+  .content .highlight{ margin: 2em -60px;}
 }

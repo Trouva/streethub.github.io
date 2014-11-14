@@ -78,8 +78,6 @@ Overview:
   </tr>
 </table>
 
-### Template-specific vs. reusable elements
-
 ### *"Use the route, Luke!"*
 
 The 3rd level in the HTML hierarchy is where all **template-specific** blocks are. Their CSS classes are systematically **prepended** with the route's name.
@@ -114,7 +112,83 @@ Because the **route** is *appended* to `route-` and to `template-`, there's no n
 
 And because the **route** is *prepended* to all template-specific selectors like `products-menu`, there's no need to make use of an ancestor like `route-products` or `template-products`.
 
-<!-- The sitemap is fairly simple:
+## (S)CSS sanity
+
+It's the first time I use a CSS pre-processor in production. I've always managed to keep my CSS short (I write in line for a higher density of information and better vertical readibility of selectors), but mostly **meaningful**, by combining selectors with *shared* properties, keeping *descriptive* names for selectors, avoiding repeating myself, and altering styles according to *context*.
+
+Using a CSS framework hasn't even crossed my mind. A framework has its benefits, especially for developers who don't want to touch any stylesheet, or for functional dashboards that solely comprise forms and buttons. But I would have spent more time overriding default styles, which would have restricted my ability to design distinct elements.
+
+### CSS structure
+
+[StreetHub.com](https://www.streethub.com) is a large-enough project for me to separate my stylesheet into multiple files.
+
+<table>
+  <tr>
+    <th><code>00-reset.scss</code></th>
+    <td><a href="https://github.com/murtaugh/HTML5-Reset/blob/master/assets/css/reset.css)">HTML5 reset</a></td>
+    <td><code>*{ margin: 0; padding: 0;}</code> doesn't seem to do the trick anymore</td>
+  </tr>
+  <tr>
+    <th><code>01-font.scss</code></th>
+    <td>Icon font</td>
+    <td>Initially created for the iPhone app, it made sense to reuse it for the desktop app: as flexible as text (especially for color and size), and kind of Retina-ready.</td>
+  </tr>
+  <tr>
+    <th><code>02-mixins.scss</code></th>
+    <td>SCSS variables and mixins</td>
+    <td>Mandatory, considering the compatibility requirements and size of the project.</td>
+  </tr>
+  <tr>
+    <th><code>03-global.scss</code></th>
+    <td>Global elements</td>
+    <td>For elements that appear on <strong>every</strong> page:<br>
+      the header (including the nav), the verstaile container, and the footer. Styling of generic tags is also included.</td>
+  </tr>
+  <tr>
+    <th><code>04-elements.scss</code></th>
+    <td>Reusable elements</td>
+    <td>Both <strong>reusable</strong> <em>and</em> <strong>self-sufficient</strong>. They act like components that appear here and there, in different contexts, even several times within the same page.<br>
+      Titles, buttons, images, dropdowns, tags, icons... Classes are ordered alphabetically because it's the best future-proof strategy there is.</td>
+  </tr>
+  <tr>
+    <th><code>05-modifiers.scss</code></th>
+    <td>Context variations</td>
+    <td>When you alter an element <em>within</em> another element. Like an icon within a button. Or a button within a title. Or a dropdown within a title. Or an icon within a dropdown within a title... It's mostly icon variations. This stylesheet must come after <code>04-elements</code> considering the styling applied are just adjustments of already defined properties.</td>
+  </tr>
+  <tr>
+    <th><code>06-containers.scss</code></th>
+    <td>Blocks containing other elements</td>
+    <td>They are <strong>not</strong> self-sufficient and only contain <strong>other</strong> elements, meaning they only exist <em>because</em> of their children.<br>
+    Example: <code>bloc-product</code> which contains <code>image</code> <code>name</code> <code>price</code> <code>stamp</code> and <code>circle</code>.<br>
+    The <code>bloc-product</code> acts a container for these components, but wouldn't exist without them.<br>
+    This stylesheet also includes template containers, layout elements, and lists.</td>
+  </tr>
+</table>
+
+### Container vs. element
+
+It's hard to draw the line between what can be an *element* and what acts as a mere *block container* for **other** elements. I just ask myself:
+
+> "Would this element exists on its own, without its children?"
+
+If not, it's a **block**.
+
+### Template-specific vs. reusable elements
+
+### Namespacing for the sane-minded
+
+### Abstraction of styling variations
+
+The bloc-boutique has 4 different layouts but possess the *exact* same HTML structure (EmberJS component magic):
+
+How do you define 4 different styles?
+
+* use a **parent selector**, and define specific styles *within* that context. We could have `.list-boutiques-grid` `.list-boutiques-flat` and `.list-boutiques-vertical`
+* use an **additional** class, and have `.bloc-boutique.bloc-boutique-grid`. It's semantically less inspired than the "grid list".
+
+In any case, considering the power of SCSS, the abstraction can remain **within the stylesheet**, leaving the HTML structure consistent and identical throughout the templates, and, dare I say, semantic.
+
+<!--
 
 * `index`
 * `products`
@@ -137,44 +211,6 @@ And because the **route** is *prepended* to all template-specific selectors like
 * `cart`
   * `cart/checkout`
   * `cart/payment`
-  * `cart/completed` -->
+  * `cart/completed`
 
-
-<!-- 
-### Direct-child influence
-
-
-
-* **00 Reset**: The HTML5 reset, in its own separate file. Weirdly enough, `*{ margin: 0; padding: 0;}` doesn't seem to do the trick anymore.
-* **01 Font**: Just the StreetHub icon font really. Initially created for the iPhone app, it made sense to re-use it for the desktop app: as flexible as text (especially for color and size), and kind of Retina-ready.
-* **02 Mixins**: First time I use SASS on a large-scale project, and almost mandatory here, considering the compatibility requirements and size of the project. Global variables and custom mixins are located here.
-* **03 Global**: For all the elements that appear on *every* page: the header (including the nav), the verstaile container, and the footer. Styling of generic tags is also included.
-* **04 Elements**: Includes elements both re-usable *and* self-sufficient. They act like components that appear here and there, in different contexts, even several times within the same page. Examples? Titles, buttons, images, content holders, tags, icons... Classes are ordered alphabetically because it's the best future-proof strategy I could think of.
-* **05 Modifiers**: When you alter an element *within* another element. Like an icon within a button. Or a button within a title. Or a dropdown within a title. Or an icon within a dropdown within a title... It's mostly icon variations. This stylesheet must come after 04-elements considering the styling applied are just adjustments of already well-established properties.
-* **06 Containers**: Block elements that are *not* self-sufficient and only contain *other* elements. These blocks tend to not have styling applied to them, or not much at least. Best example? The bloc-product. It contains:
-
-* .image.image-thumbnail
-* .name
-* .price
-* .stamp (for "On sale" and/or "Out of stock")
-
-The bloc-product is acts a container for these components, but wouldn't exist without them.
-This stylesheet also includes template containers, layout elements, and lists.
-
-### Re-usable blocks Vs. template-specific containers
-
-Why "bloc" and not "block"? Probably a relic of French-nurtured CSS and my fondness for 4-letter words.
-
-### Namespacing for the sane-minded
-
-It's hard to draw the line between what can be an element and what acts as a mere block container for other elements. I just ask myself: "Would this element exists on its own, without its children?". If not, it's a block.
-
-### Abstraction of styling variations
-
-The bloc-boutique has 4 different layouts but possess the *exact* same HTML structure (EmberJS component magic):
-
-How do you define 4 different styles?
-* use a parent selector, and define specific styles *within* that context. We could have a .list-boutiques-grid, .list-boutiques-flat, .list-boutiques-vertical
-* use an additional class, and have .bloc-boutique.bloc-boutique-grid. It's semantically less inspired than the "grid list".
-
-In any case, considering the power of SCSS, the abstraction can remain within the stylesheet, leaving the HTML structure consistent and identical throughout the templates, and, dare I say, semantic. -->
+-->
