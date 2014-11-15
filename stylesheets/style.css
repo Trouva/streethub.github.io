@@ -51,7 +51,7 @@ strong{ color: #1a1a1a;}
   .content a:hover{ border-bottom-color: #cf553e; color: #1a1a1a;}
 .content h2{ font-size: 32px; margin: 2em 0 1em; position: relative; text-align: center;}
 .content h3{ color: #1a1a1a; font-size: 32px; font-weight: 600; line-height: 1; margin-top: 2em;}
-.content h3{ font-size: 24px; margin-top: 3em;}
+.content h3{ font-size: 24px;}
 .content h3 em{ font-weight: 600;}
 .content p,
 .content blockquote{ margin: 1em 0;}
@@ -59,16 +59,18 @@ strong{ color: #1a1a1a;}
   .content p:last-child{ margin-bottom: 0;}
 .content ul{ list-style: outside disc; margin: 1em;}
 .content ul ul{ list-style: outside circle;}
-.content blockquote{ background: #fefae3; border-left: 5px solid #fce473; font-style: italic; padding: 1em 2em;}
+.content blockquote{ background: #fefae3; border-left: 5px solid #fce473; font-style: italic; padding: 1.125em 1.5em 1em;}
 .content blockquote p{ margin: 0;}
 .content p code,
 .content li code,
 .content table code{ background: #23241f; color: #f8f8f2; font-size: 12px; padding: 3px 5px; position: relative; top: -2px; white-space: nowrap;}
 .content figure{ text-align: center;}
-.content figure a img{ vertical-align: top;}
+.content figcaption{ color: #b3b3b3; display: block; font-style: italic; margin-top: 1em;}
 .content table{ font-size: 16px; line-height: 1.25; width: 100%;}
 .content th,
 .content td{ border: 1px solid #e0e0e0; padding: 10px; text-align: left; vertical-align: top;}
+.content th img{ max-width: none;}
+.content td ul{ margin: 0 1em;}
 .content .highlight{ font-size: 12px;}
 .content .hljs{ vertical-align: top; width: 100%;}
 
@@ -107,15 +109,15 @@ strong{ color: #1a1a1a;}
   .content{ padding: 0 0 80px;}
   .content h2{ font-size: 48px; margin: 2em 0; padding: 0 80px;}
   .content h2:before,
-  .content h2:after{ background: #4d4d4d; content: ''; display: block; height: 1px; left: -80px; position: absolute; top: 50%; width: 160px;}
-  .content h2:after{ left: auto; right: -80px;}
+  .content h2:after{ background: #4d4d4d; content: ''; display: block; height: 1px; left: -180px; position: absolute; top: 50%; width: 260px;}
+  .content h2:after{ left: auto; right: -180px;}
   .content h3{ font-size: 32px;}
+  .content p code,
+  .content li code{ font-size: 14px; top: -1px;}
   .content .highlight{ font-size: 14px;}
 }
 
 @media (min-width: 1000px) {
   .content figure{ margin: 2em -60px 3em;}
-  .content figure img{ box-shadow: 0 10px 10px rgba(0,0,0,0.1); transition: all 250ms ease-out;}
-    .content figure a:hover img{ box-shadow: 0 10px 10px rgba(0,0,0,0.3);}
   .content .highlight{ margin: 2em -60px;}
 }
