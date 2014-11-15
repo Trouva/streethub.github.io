@@ -5,7 +5,7 @@ subtitle: Namespacing, context, and portability
 author: Jeremy
 categories: design
 cover: html-css-structure
-<!-- published: false -->
+published: false
 ---
 
 
