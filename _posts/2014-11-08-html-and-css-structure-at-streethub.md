@@ -5,7 +5,7 @@ subtitle: Namespacing, context, and portability
 author: Jeremy
 categories: design
 cover: html-css-structure
-published: false
+<!-- published: false -->
 ---
 
 
@@ -116,7 +116,7 @@ And because the **route** is *prepended* to all template-specific selectors like
 
 It's the first time I use a CSS pre-processor in production. I've always managed to keep my CSS short (I write in line for a higher density of information and better vertical readibility of selectors), but mostly **meaningful**, by combining selectors with *shared* properties, keeping *descriptive* names for selectors, avoiding repeating myself, and altering styles according to *context*.
 
-Using a CSS framework hasn't even crossed my mind. A framework has its benefits, especially for developers who don't want to touch any stylesheet, or for functional dashboards that solely comprise forms and buttons. But I would have spent more time overriding default styles, which would have restricted my ability to design distinct elements.
+Using a CSS framework hasn't even crossed my mind. A framework has its benefits though, especially for developers who don't want to touch any stylesheet, or for functional dashboards that solely comprise forms, columns, and buttons. But I would have spent more time overriding default styles, which would have restricted my ability to design distinct elements.
 
 ### CSS structure
 
@@ -173,7 +173,11 @@ It's hard to draw the line between what can be an *element* and what acts as a m
 
 If not, it's a **block**.
 
-### Template-specific vs. reusable elements
+### Template-specific vs. reusable blocks
+
+On the homepage, there is a **mosaic** of images. It's called `index-pentagon`, because it's on the homepage (`/index` route) and it has 5 images.
+
+Is it unique throughout the website? **Yes**. It can keep its route-prefixed CSS class because it won't be reused anywhere else.
 
 ### Namespacing for the sane-minded
 

@@ -64,9 +64,9 @@ using HTML, CSS and JavaScript.</p>
 <p>In our app, we have used the <a href="https://github.com/imhotep/MapKit">MapKit cordova plugin</a> plugin. Most of core features were already implemented but we need to use more methods from the mapkit framework (map scrolling). You can easily extend a plugin by adding the declaration of the method in the header file and the declaration in the .m file.  Then, you can execute the newly added method with the following code.</p>
 
 <p>On the iOS side (Objective-C)</p>
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="c1">// Header file (.h)</span>
-<span class="k">@interface</span> <span class="nc">MapKitView</span> : <span class="nc">CDVPlugin</span> <span class="o">&lt;</span><span class="bp">MKMapViewDelegate</span><span class="o">&gt;</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">changePinsColor</span><span class="p">:(</span><span class="n">CDVInvokedUrlCommand</span> <span class="o">*</span><span class="p">)</span><span class="n">command</span><span class="p">;</span>
+<div class="highlight"><pre><code class="objective-c language-objective-c" data-lang="objective-c"><span class="c1">// Header file (.h)</span>
+<span class="k">@interface</span> <span class="nc">MapKitView</span> : <span class="nc">CDVPlugin</span> <span class="o">&lt;</span><span class="n">MKMapViewDelegate</span><span class="o">&gt;</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">changePinsColor</span><span class="o">:</span><span class="p">(</span><span class="n">CDVInvokedUrlCommand</span> <span class="o">*</span><span class="p">)</span><span class="n">command</span><span class="p">;</span>
 <span class="k">@end</span>
 
 <span class="c1">// Declaration (.m)</span>
@@ -75,27 +75,27 @@ using HTML, CSS and JavaScript.</p>
 <span class="c1">// ...</span>
 
 <span class="k">@implementation</span> <span class="nc">MapKitView</span>
-<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">changePinsColor:</span><span class="p">(</span><span class="n">CDVInvokedUrlCommand</span> <span class="o">*</span><span class="p">)</span><span class="nv">command</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">changePinsColor:</span><span class="p">(</span><span class="n">CDVInvokedUrlCommand</span> <span class="o">*</span><span class="p">)</span><span class="nv">command</span>
 <span class="p">{</span>
     <span class="n">CDVPluginResult</span><span class="o">*</span> <span class="n">pluginResult</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
 
     <span class="c1">// ...</span>
 
     <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">error</span><span class="p">){</span>
-        <span class="n">pluginResult</span> <span class="o">=</span> <span class="p">[</span><span class="n">CDVPluginResult</span> <span class="nl">resultWithStatus</span><span class="p">:</span><span class="n">CDVCommandStatus_OK</span><span class="p">];</span>
+        <span class="n">pluginResult</span> <span class="o">=</span> <span class="p">[</span><span class="n">CDVPluginResult</span> <span class="n">resultWithStatus</span><span class="o">:</span><span class="n">CDVCommandStatus_OK</span><span class="p">];</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="n">pluginResult</span> <span class="o">=</span> <span class="p">[</span><span class="n">CDVPluginResult</span> <span class="nl">resultWithStatus</span><span class="p">:</span><span class="n">CDVCommandStatus_ERROR</span><span class="p">];</span>
+        <span class="n">pluginResult</span> <span class="o">=</span> <span class="p">[</span><span class="n">CDVPluginResult</span> <span class="n">resultWithStatus</span><span class="o">:</span><span class="n">CDVCommandStatus_ERROR</span><span class="p">];</span>
     <span class="p">}</span>
 
     <span class="c1">// Callback function for plugin</span>
-    <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">commandDelegate</span>
-        <span class="nl">sendPluginResult</span><span class="p">:</span><span class="n">pluginResult</span>
-        <span class="nl">callbackId</span><span class="p">:</span><span class="n">command</span><span class="p">.</span><span class="n">callbackId</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">commandDelegate</span>
+        <span class="nl">sendPluginResult:</span><span class="n">pluginResult</span>
+        <span class="nl">callbackId:</span><span class="n">command</span><span class="p">.</span><span class="n">callbackId</span><span class="p">];</span>
 <span class="p">}</span>
 <span class="k">@end</span>
 </code></pre></div>
 <p>On the web app side (Javascript)</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Generic example</span>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="c1">// Generic example</span>
 <span class="nx">cordovaRef</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">success</span><span class="p">,</span> <span class="nx">error</span><span class="p">,</span> <span class="s2">&quot;service&quot;</span><span class="p">,</span> <span class="s2">&quot;action&quot;</span><span class="p">,</span> <span class="p">[</span><span class="nx">params</span><span class="p">]);</span>
 
 <span class="c1">// Mapkit example</span>
@@ -109,9 +109,9 @@ using HTML, CSS and JavaScript.</p>
 <h2>Executing javascript</h2>
 
 <p>Now, Imagine you need to communicate from the iOS method to your webapp, you can use the <code>stringByEvaluatingJavaScriptFromString</code> method.</p>
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="c1">// Execute a javascript function in the web view</span>
-<span class="bp">NSString</span> <span class="o">*</span><span class="n">FunctionString</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSString</span> <span class="nl">stringWithFormat</span><span class="p">:</span><span class="s">@&quot;%s&quot;</span><span class="p">,</span> <span class="s">&quot;someCallback()&quot;</span><span class="p">];</span>
-<span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">webView</span> <span class="nl">stringByEvaluatingJavaScriptFromString</span><span class="p">:</span><span class="n">FunctionString</span><span class="p">];</span>
+<div class="highlight"><pre><code class="objective-c language-objective-c" data-lang="objective-c"><span class="c1">// Execute a javascript function in the web view</span>
+<span class="n">NSString</span> <span class="o">*</span><span class="n">FunctionString</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="n">stringWithFormat</span><span class="o">:</span><span class="s">@&quot;%s&quot;</span><span class="p">,</span> <span class="s">&quot;someCallback()&quot;</span><span class="p">];</span>
+<span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">webView</span> <span class="n">stringByEvaluatingJavaScriptFromString</span><span class="o">:</span><span class="n">FunctionString</span><span class="p">];</span>
 </code></pre></div>
 <p>You only need to defined the <code>someCallback</code> in your webapp and attach it to the <code>window</code> object.</p>
 
@@ -124,7 +124,7 @@ using HTML, CSS and JavaScript.</p>
 <ul>
 <li><code>Pulse.beat</code> communicates with the iOS app. It&#39;ll use the <code>cordova.exec</code> method to execute any method in an cordova plugin.</li>
 </ul>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Calls the changePinsColor method in the mapKit cordova plugin</span>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="c1">// Calls the changePinsColor method in the mapKit cordova plugin</span>
 <span class="nx">Pulse</span><span class="p">.</span><span class="nx">beat</span><span class="p">(</span><span class="s1">&#39;mapKit.changePinsColor&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="nx">success</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
 </code></pre></div>
 <ul>
@@ -132,16 +132,16 @@ using HTML, CSS and JavaScript.</p>
 </ul>
 
 <p>We currently use it as a callback for the regionDidChangeAnimated event. It will return us the visible pins on the map.</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Register event to show the visible annotations on the map</span>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="c1">// Register event to show the visible annotations on the map</span>
 <span class="nx">Pulse</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="s1">&#39;mapKit.regionDidChangeAnimated&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">){</span>
  <span class="c1">// Success</span>
 <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">mapView:</span><span class="p">(</span><span class="bp">MKMapView</span> <span class="o">*</span><span class="p">)</span><span class="nv">mapView</span> <span class="nf">regionDidChangeAnimated:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">animated</span> <span class="p">{</span>
+</code></pre></div><div class="highlight"><pre><code class="objective-c language-objective-c" data-lang="objective-c"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">mapView:</span><span class="p">(</span><span class="n">MKMapView</span> <span class="o">*</span><span class="p">)</span><span class="nv">mapView</span> <span class="nf">regionDidChangeAnimated:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">animated</span> <span class="p">{</span>
     <span class="c1">// ...</span>
 
-    <span class="bp">NSString</span> <span class="o">*</span><span class="n">functionString</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSString</span>
-        <span class="nl">stringWithFormat</span><span class="p">:</span><span class="s">@&quot;%s&quot;</span><span class="p">,</span> <span class="s">&quot;mapKit.regionDidChangeAnimated()&quot;</span><span class="p">];</span>
-    <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">webView</span> <span class="nl">stringByEvaluatingJavaScriptFromString</span><span class="p">:</span><span class="n">functionString</span><span class="p">];</span>
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">functionString</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span>
+        <span class="nl">stringWithFormat:</span><span class="s">@&quot;%s&quot;</span><span class="p">,</span> <span class="s">&quot;mapKit.regionDidChangeAnimated()&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">webView</span> <span class="n">stringByEvaluatingJavaScriptFromString</span><span class="o">:</span><span class="n">functionString</span><span class="p">];</span>
 
 <span class="p">}</span>
 </code></pre></div>
