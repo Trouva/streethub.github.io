@@ -50,6 +50,7 @@ strong{ color: #1a1a1a;}
   .content a:visited{ color: #847bb9;}
   .content a:hover{ border-bottom-color: #cf553e; color: #1a1a1a;}
 .content h2{ font-size: 32px; margin: 2em 0 1em; position: relative; text-align: center;}
+.content h2 em{ color: #b3b3b3; display: block; font-size: 50%; font-style: normal;}
 .content h3{ color: #1a1a1a; font-size: 32px; font-weight: 600; line-height: 1; margin-top: 2em;}
 .content h3{ font-size: 24px;}
 .content h3 em{ font-weight: 600;}

@@ -5,7 +5,6 @@ subtitle: Namespacing, context, and portability
 author: Jeremy
 categories: design
 cover: html-css-structure
-published: false
 ---
 
 
@@ -39,7 +38,7 @@ Overview:
     <img src="/images/hub-structure.png" alt="Hub structure">
   </a>
   <figcaption>
-    <a href="/html/structure.html">Click to view the interactive structure</a>
+    <a href="/html/structure.html">View the interactive structure</a>
   </figcaption>
 </figure>
 
@@ -67,7 +66,7 @@ Overview:
   <tr>
     <th><img src="/images/section-specific.png" alt="specific"></th>
     <td>template-specific blocks</td>
-    <td>Level of hierarchy meant to contextualize the children to this template <em>only</em>.</td>
+    <td>Level of hierarchy meant to contextualize the children of this template <em>only</em>.</td>
   </tr>
   <tr>
     <th><img src="/images/section-bloc.png" alt="bloc"></th>
@@ -196,7 +195,9 @@ Using a CSS framework hasn't even crossed my mind. A framework has its benefits 
   <img src="/images/css-time-chart.png" alt="CSS time chart">
 </figure>
 
-It's easy to run out of **relevant** names for your CSS classes.
+It's easy to find names for *elements*: considering how they can exist without any context, a **descriptive** name (not of the styling but of the meaning) is straightforward. `.button` for buttons, `.tag` for tags, `.price` for price...
+
+It's also easy to run out of **relevant** names for *everything else*, especially containers. My strategy is to **prefix** containers (specific or reusable ones), making them 2-worded, and leave elements the dictionary's exclusivity.
 
 ### Container vs. element
 
@@ -271,44 +272,86 @@ It appears on the homepage, the wishlist, the boutique page, the cart... Its CSS
 
 Its CSS is very light: considering it's a **container** for elements, and because these elements already have a style of themselves, there's nothing much left to alter.
 
-### Selectors ordering
+### Selectors order
 
+The order in which selectors appear has an impact on the style ultimately applied: for 2 equally-weighted selectors, the latter will have **precendence**. But considering:
 
+* my strategy of only letting direct parents have an impact (in non-single selectors)
+* my choice of using CSS classes exclusively
+* the order in which files are called by the preprocessor
+
+CSS priority is not a major concern.
+
+It's only one in `05-containers.scss`. First you'll find `bloc-` and `layout-` blocks, which are both reusable. The rest of the file is ordered by **route**, where reusable blocks can be *altered* within the *context* of a template-specific block.
+
+For example, the `/boutiques` route looks like this:
+
+<figure>
+  <img src="/images/boutiques-route.png" alt="Screenshot of the CSS">
+</figure>
+
+There are:
+
+* template-specific blocks, like `.boutiques-heading`
+* reusable blocks *altered* by template-specific ones, like `.boutiques-list .bloc-boutiques`
+* template and route blocks, which alter already defined blocks and elements
 
 ### Abstraction of style alternatives
 
-The bloc-boutique has 4 different layouts but possess the *exact* same HTML structure (EmberJS component magic):
+The `.bloc-boutique` has 4 different layouts that all use the *exact* same HTML markup.
+
+<figure>
+  <img src="/images/bloc-boutique-variations.png" alt="bloc-boutique styles">
+  <figcaption>
+    1. Default -
+    2. Map -
+    3. Stack -
+    4. Grid
+  </figcaption>
+</figure>
 
 How do you define 4 different styles?
 
-* use a **parent selector**, and define specific styles *within* that context. We could have `.list-boutiques-grid` `.list-boutiques-flat` and `.list-boutiques-vertical`
-* use an **additional** class, and have `.bloc-boutique.bloc-boutique-grid`. It's semantically less inspired than the "grid list".
+* through a **parent selector**, and define specific styles *within* that context. We could have `.list-boutiques-grid .bloc-boutique` `.list-boutiques-flat .bloc-boutique` and `.list-boutiques-vertical .bloc-boutique`
+* with an **additional** class, and have `.bloc-boutique.bloc-boutique-cell`. It's semantically less inspired than the "grid list".
 
-In any case, considering the power of SCSS, the abstraction can remain **within the stylesheet**, leaving the HTML structure consistent and identical throughout the templates, and, dare I say, semantic.
+In any case, we want to alter the HTML code *as less as possible*, or even **not at all**. Considering that the markup is already populated with template-specific contextualizers, it's easy to use them to **choose** which layout we want for each template.
 
-<!--
+Thanks to SCSS, **the abstraction can remain within the stylesheet**, leaving the HTML structure consistent and identical throughout the templates, and, dare I say, semantic.
 
-* `index`
-* `products`
-  * `product`
-* `boutiques`
-  * `boutique`
-* `trending`
-* `collections`
-  * `collection`
-* `blog`
-  * `blog/archive`
-* `pages`
-  * `pages/faq`
-  * `pages/team`
-  * `pages/contact`
-  * etc.
-* `user`
-  * `user/wishlist`
-  * `user/following`
-* `cart`
-  * `cart/checkout`
-  * `cart/payment`
-  * `cart/completed`
+What is ultimately altered in each case? It's `.bloc-boutique`. So let's write the *default* style and its *variations*:
 
--->
+<figure>
+  <img src="/images/bloc-boutique-css.png" alt="bloc-boutique css">
+</figure>
+
+The naming is not exactly **semantic**: *"grid"* and *"stack"* describe the visual layout, whereas *"map"* tells where it should be used. If we were to use these class names in the HTML markup, I would break the golden rule I try to constantly follow:
+
+> HTML is for content, CSS is for layout
+
+Thankfully, SCSS provides the `@extend` method, which allows applying all the styles of a class to another class. In my case, I use it to apply additional styles **within a context**:
+
+<figure>
+  <img src="/images/scss-extend-bloc-boutique.png" alt="bloc-boutique extend">
+</figure>
+
+On the user account page where all the boutiques he's following are listed, I want the boutiques to appear in a grid. **In a single CSS property**, I just call *all* the styles (children included) of `.bloc-boutique-grid`, without having to alter any HTML.
+
+Choosing another of the predefined layouts would require changing a single word only.
+
+<h2>
+  Best approach
+  <em>(so far)</em>
+</h2>
+
+We launched [StreetHub.com](https://www.streethub.com)'s latest version 3 months ago. The adopted HTML/CSS structure has proven to be:
+
+* flexible enough for page additions
+* readable enough for design alterations
+* meaningful enough to perform quick fixes
+
+Unlike programming languages, HTML and CSS don't exactly have best practices. You just refine through common sense your decisions over the years, and avoid cramming your code with unreadable patterns.
+
+I'm not sure I'll ever reach a point where I'll be completely satisfied with my approach, where any theoretical flaw would be nonexistent and any reconsideration futile.
+
+I wish I never will: it would be utterly boring.
