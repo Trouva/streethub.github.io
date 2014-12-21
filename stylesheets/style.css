@@ -4,9 +4,8 @@ abbr,address,article,aside,audio,b,blockquote,body,body div,caption,cite,code,dd
 
 /* Shared properties */
 
-body, .content h2{ font-family: Effra, Arial, sans-serif;}
-.content{ font-family: 'Gentium Book Basic', Georgia, serif;}
-p, ul, ol, li{ font-weight: 300;}
+body, .content h2, .content h3{ font-family: Effra, Arial, sans-serif;}
+.content{ font-family: Vollkorn, Georgia, serif;}
 
 /* Generic tags*/
 
@@ -46,7 +45,7 @@ strong{ color: #1a1a1a;}
 .single .info{ font-size: 16px;}
 
 .content{ margin: 0 auto; max-width: 840px; padding: 20px;}
-.content a{ border-bottom: 2px solid #f2f2f2; padding-bottom: 2px;}
+.content a{ border-bottom: 2px solid #f2f2f2;}
   .content a:visited{ color: #847bb9;}
   .content a:hover{ border-bottom-color: #cf553e; color: #1a1a1a;}
 .content h2{ font-size: 32px; margin: 2em 0 1em; position: relative; text-align: center;}
@@ -91,11 +90,11 @@ strong{ color: #1a1a1a;}
   body{ font-size: 20px;}
   .header{ padding: 80px 0;}
   .description{ font-size: 20px;}
-  .link{ display: inline-block; font-size: 10px; padding: 5px 12px 5px 14px; vertical-align: top;}
+  .link{ display: inline-block; font-size: 10px; padding: 6px 12px 8px 14px; vertical-align: top;}
     .link:hover{ padding-right: 24px;}
     .streethub.link{ position: absolute; right: 20px; top: 20px;}
   .link span{ color: white; font-size: 9px; opacity: 0; position: absolute; right: 8px; top: -6px; transition: all 100ms ease-out;}
-    .link:hover span{ opacity: 0.5; top: 6px}
+    .link:hover span{ opacity: 0.5; top: 8px}
   .cover{ height: 480px;}
   .heading{ margin: -60px 60px 0; padding: 40px 30px 60px;}
   .title{ font-size: 36px;}
