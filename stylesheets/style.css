@@ -9,7 +9,7 @@ body, .content h2, .content h3{ font-family: Effra, Arial, sans-serif;}
 
 /* Generic tags*/
 
-body{ background: #fafafa; color: #333; font-size: 16px; line-height: 1.6;}
+body{ background: #f2f2f2; color: #333; font-size: 20px; line-height: 1.5;}
 a{ color: #cf553e; text-decoration: none; transition: all 100ms ease-out;}
 strong{ color: #1a1a1a;}
 
@@ -21,17 +21,18 @@ strong{ color: #1a1a1a;}
 .logo{ display: inline-block; vertical-align: top;}
 .description{ font-size: 16px; font-weight: 300;}
 
-.link{ border: 1px solid #4d4d4d; color: #1a1a1a; display: block; font-size: 12px; font-weight: 400; letter-spacing: 0.2em; padding: 20px 0; position: relative; text-align: center; text-transform: uppercase; transition: all 100ms ease-out;}
+.link{ border: 1px solid #4d4d4d; border-radius: 3px; color: #1a1a1a; display: block; font-size: 12px; font-weight: 400; letter-spacing: 0.2em; margin: 20px; padding: 20px 0; position: relative; text-align: center; text-transform: uppercase; transition: all 100ms ease-out;}
   .link:hover{ background: #cf553e; border-color: #cf553e; color: white;}
 
 /* Post */
 
 .post{ background: white; position: relative;}
 .cover{ background: #f2f2f2 no-repeat center center; background-size: cover; height: 240px;}
-.heading{ background: white; padding: 25px 20px 40px; text-align: center;}
+.heading{ background: white; padding: 25px 25px 40px; text-align: center;}
 .title,
 .subtitle,
-.content h2{ color: #1a1a1a; font-size: 24px; font-weight: 600; letter-spacing: 0.2em; line-height: 1.25; text-transform: uppercase;}
+.content h2{ color: #1a1a1a; font-size: 28px; font-weight: 600; letter-spacing: 0.2em; line-height: 1.25; text-transform: uppercase;}
+.title{ letter-spacing: 0.15em; line-height: 1.125;}
 .subtitle{ color: #808080; font-size: 14px; font-weight: 300; margin: 1em 0;}
 .info{ color: #b3b3b3; font-size: 14px;}
 .info li{ display: inline-block; margin: 0 0.5em; vertical-align: top;}
@@ -64,8 +65,8 @@ strong{ color: #1a1a1a;}
 .content p code,
 .content li code,
 .content table code{ background: #23241f; color: #f8f8f2; font-size: 12px; padding: 3px 5px; position: relative; top: -2px; white-space: nowrap;}
-.content figure{ text-align: center;}
-.content figcaption{ color: #b3b3b3; display: block; font-style: italic; margin-top: 1em;}
+.content figure{ margin: 2em 0 3em; text-align: center;}
+.content figcaption{ color: #808080; display: block; font-style: italic; line-height: 1.25; margin: 1em 2em 0;}
 .content table{ font-size: 16px; line-height: 1.25; width: 100%;}
 .content th,
 .content td{ border: 1px solid #e0e0e0; padding: 10px; text-align: left; vertical-align: top;}
@@ -90,13 +91,13 @@ strong{ color: #1a1a1a;}
   body{ font-size: 20px;}
   .header{ padding: 80px 0;}
   .description{ font-size: 20px;}
-  .link{ display: inline-block; font-size: 10px; padding: 6px 12px 8px 14px; vertical-align: top;}
+  .link{ display: inline-block; font-size: 10px; margin: 0; padding: 6px 12px 8px 14px; vertical-align: top;}
     .link:hover{ padding-right: 24px;}
     .streethub.link{ position: absolute; right: 20px; top: 20px;}
   .link span{ color: white; font-size: 9px; opacity: 0; position: absolute; right: 8px; top: -6px; transition: all 100ms ease-out;}
     .link:hover span{ opacity: 0.5; top: 8px}
   .cover{ height: 480px;}
-  .heading{ margin: -60px 60px 0; padding: 40px 30px 60px;}
+  .heading{ margin: -60px 60px 0; padding: 40px 40px 60px;}
   .title{ font-size: 36px;}
   .subtitle,
   .info{ font-size: 20px;}
